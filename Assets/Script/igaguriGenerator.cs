@@ -5,10 +5,10 @@ using UnityEngine;
 public class igaguriGenerator : MonoBehaviour
 {
     public GameObject igaguriPrefab;
+    public int i = 0;
     // Update is called once per frame
     void Update()
     {
-        int i = 0;
         if (i < 100)
         {
             //クリックでイガグリを生成し続ける

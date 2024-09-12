@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class igaguriController : MonoBehaviour
 {
+    public int point = 0;
     //ìäÇ∞ÇÈÉÅÉ\ÉbÉh
     public void Shoot(Vector3 dir)
     {
         GetComponent<Rigidbody>().AddForce(dir);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter()
     {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ParticleSystem>().Play();
@@ -19,6 +20,9 @@ public class igaguriController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        //Shoot(new Vector3(0, 200, 2000));
+        if (GetComponent<Rigidbody>().isKinematic == true)
+        {
+            point += 10;
+        }
     }
 }
