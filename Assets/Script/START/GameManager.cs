@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    startController start;
     public static GameManager instance;
     public void Awake()
     {
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneData.score = 0;
-        SceneManager.LoadScene("game");
+         SceneManager.LoadScene("game");
     }
     //リスタートメソッド
     public void ReturnToStart()
