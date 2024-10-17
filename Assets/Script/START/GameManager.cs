@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SceneDate;
 
 public class GameManager : MonoBehaviour
 {
-    startController start;
-    public static GameManager instance;
+    public static GameManager Instance { get; private set; }
+    public int score { get; private set; }
     public void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -23,25 +24,14 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneData.score = 0;
-         SceneManager.LoadScene("game");
+         SceneManager.LoadScene("Game");
     }
-    //リスタートメソッド
-    public void ReturnToStart()
+    //エンドメソッド
+    public void EndGame()
     {
-        ResetGame();
-        SceneManager.LoadScene("start");
-    }
-    public void ResetGame()
-    {
-        SceneData.score = 0;
-        SceneData.time = 30;
+        //獲得したスコアとリザルト画面へ遷移
+        SceneData.score = ScoreScript.instance.GetCurrentScore();
 
-        //すべてのブロックを削除
-        GameObject[] igaguris = GameObject.FindGameObjectsWithTag("igaguri");
-
-        foreach (GameObject igaguri in igaguris)
-        {
-            Destroy(igaguri);
-        }
+        SceneManager.LoadScene("Result");
     }
 }

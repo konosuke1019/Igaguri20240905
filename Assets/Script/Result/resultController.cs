@@ -5,16 +5,12 @@ using UnityEngine;
 
 public class resultController : MonoBehaviour
 {
-    public GameObject scoreTextObject;      //ÉXÉRÉA
+    private int totalcore = 0;
+    public GameObject scoreText;
     // Start is called before the first frame update
     void Start()
     {
-        this.scoreTextObject.GetComponent<TextMeshProUGUI>().text = "SCORE : " + SceneData.score;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        GameManager.instance.ReturnToStart();
+        totalcore = ScoreScript.instance.GetCurrentScore();
+        this.scoreText.GetComponent<TextMeshProUGUI>().text = "Result \n TotalScore : " + totalcore.ToString() + " POINT";
     }
 }

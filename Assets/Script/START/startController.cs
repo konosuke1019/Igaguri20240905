@@ -7,6 +7,6 @@ public class startController : MonoBehaviour
 {
     public void OnStartButtonPresssed()
     {
-        GameManager.instance.StartGame();
+        GameManager.Instance.StartGame();
     }
 }

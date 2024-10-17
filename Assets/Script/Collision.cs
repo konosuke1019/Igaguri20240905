@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
-    igaguriGenerator generator;
-    // Start is called before the first frame update
-    private void OnCollisionEnter()
+    public int point = 10;
+    private int count = 0;
+    private void OnCollisionEnter(Collision collision)
     {
-        generator = FindObjectOfType<igaguriGenerator>();
+        count++;
+        if (count == 100)
+        {
+            point *= 3;
+            count = 0;
+        }
+        ScoreScript.instance.ScoreManager(point);
     }
 }
